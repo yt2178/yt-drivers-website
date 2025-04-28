@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YT Drivers - אפליקציה חכמה לניהול רכבים</title>
+    <title>YT Drivers - אפליקציה חכמה לניהול רכבים ונסיעות</title>
     <style>
         body {
             margin: 0;
@@ -43,11 +43,11 @@
             font-size: 18px;
             color: #555;
         }
-        .btn-download {
+        .btn-download, .btn-language {
             background: #28a745;
             color: white;
             padding: 15px 30px;
-            margin-top: 25px;
+            margin-top: 20px;
             border: none;
             border-radius: 8px;
             font-size: 18px;
@@ -56,9 +56,22 @@
             display: inline-block;
             transition: transform 0.3s ease, background 0.3s ease;
         }
+        .btn-language {
+            background: #007bff;
+            margin-top: 10px;
+        }
         .btn-download:hover {
             background: #218838;
             transform: scale(1.05);
+        }
+        .btn-language:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        .creator {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #777;
         }
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(30px); }
@@ -70,10 +83,37 @@
 
 <div class="card">
     <div class="logo" style="background-image: url('logo.png');"></div>
-    <h1>YT Drivers</h1>
-    <p>נהל את רכבי החברה בקלות וביעילות דרך האפליקציה שלנו!</p>
-    <a href="https://drive.google.com/uc?export=download&id=15SqpQyVAdhtruNY-PCFRQrhvA2ORZ1i6" class="btn-download" target="_blank">הורדה</a>
+    <h1 id="title">YT Drivers</h1>
+    <p id="description">נהל רכבים ונסיעות בקלות וביעילות דרך האפליקציה שלנו!</p>
+    <a href="https://drive.google.com/uc?export=download&id=15SqpQyVAdhtruNY-PCFRQrhvA2ORZ1i6" class="btn-download" id="download-button" target="_blank">הורדה</a>
+    <div class="creator" id="creator">היוצר: YT</div>
+    <button class="btn-language" onclick="toggleLanguage()" id="language-button">English</button>
 </div>
+
+<script>
+    let isHebrew = true;
+
+    function toggleLanguage() {
+        if (isHebrew) {
+            document.getElementById('title').innerText = 'YT Drivers';
+            document.getElementById('description').innerText = 'Manage your company vehicles and trips easily and efficiently with our app!';
+            document.getElementById('download-button').innerText = 'Download';
+            document.getElementById('creator').innerText = 'Creator: YT';
+            document.getElementById('language-button').innerText = 'עברית';
+            document.documentElement.lang = 'en';
+            document.body.dir = 'ltr';
+        } else {
+            document.getElementById('title').innerText = 'YT Drivers';
+            document.getElementById('description').innerText = 'נהל את רכבי החברה והנסיעות בקלות וביעילות דרך האפליקציה שלנו!';
+            document.getElementById('download-button').innerText = 'הורדה';
+            document.getElementById('creator').innerText = 'היוצר: YT';
+            document.getElementById('language-button').innerText = 'English';
+            document.documentElement.lang = 'he';
+            document.body.dir = 'rtl';
+        }
+        isHebrew = !isHebrew;
+    }
+</script>
 
 </body>
 </html>
